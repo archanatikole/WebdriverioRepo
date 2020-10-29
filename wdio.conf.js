@@ -1,5 +1,7 @@
+const {join} = require('path');
+const baselinePath = null;
 exports.config = {
-
+    
     //
     // ====================
     // Runner Configuration
@@ -40,21 +42,41 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    //maxInstances: 10,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
+  
     
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 5,
+        maxInstances: 2,
         //
-        browserName: 'chrome',
-        acceptInsecureCerts: true
+      
+        acceptInsecureCerts: true,
+    capabilities: [{
+        browserName: "chrome",
+        "goog:chromeOptions": {
+            args: ["--window-size=1200,1024"]
+        }
+       // } ,
+      //  {
+       //     browserName: "chrome",
+      //      "goog:chromeOptions": {
+     //          args: ["--window-size=720,700"]
+    //   }
+       //},
+      //  {
+      //      browserName: "chrome",
+    //        "goog:chromeOptions": {
+    //            args: ["--window-size=360,700"]
+     //   }
+
+
+        
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -102,13 +124,31 @@ exports.config = {
     //
     // Default request retries count
     connectionRetryCount: 3,
+   // baselinePath : join(process.cwd(), './test/baseline/'),
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
-    
+   
+    services: ['chromedriver',
+   
+    ['image-comparison',
+       
+    // The options
+    {
+        // Some options, see the docs for more
+        baselineFolder:  join(process.cwd(), './test/baseline/'),
+        formatImageName: '{tag}-{logName}-{width}x{height}',
+        screenshotPath: join(process.cwd(), '.tmp/'),
+        savePerInstance: true,
+        autoSaveBaseline: true,
+        blockOutStatusBar: true,
+        blockOutToolBar: true,
+        // ... more options
+    }]
+       
+    ],
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks.html

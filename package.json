@@ -7,7 +7,7 @@
     "test": "npx wdio wdio.conf.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Archana Tikole",
   "license": "ISC",
   "devDependencies": {
     "@wdio/cli": "^6.3.5",
@@ -15,7 +15,8 @@
     "@wdio/mocha-framework": "^6.3.0",
     "@wdio/spec-reporter": "^6.3.0",
     "@wdio/sync": "^6.3.3",
-    "chromedriver": "^84.0.1",
-    "wdio-chromedriver-service": "^6.0.3"
+    "chromedriver": "^86.0.0",
+    "wdio-chromedriver-service": "^6.0.3",
+    "wdio-image-comparison-service": "^1.14.0"
   }
 }

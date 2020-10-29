@@ -10,4 +10,22 @@ module.exports = class Page {
     open (path) {
         return browser.url(`https://demo.midtrans.com/`)
     }
+   
+    verifyFullPage(options){
+        const checkResult = {
+            // The formatted filename, this depends on the options `formatImageName`
+            fileName: 'examplePage-chrome-headless-latest-1366x768.png',
+            folders: {
+                // The actual folder and the file name
+                actual: './.tmp/actual/desktop_chrome/*.png',
+                // The baseline folder and the file name
+                baseline: './test/baseline//desktop_chrome/*.png',
+                // This following folder is optional and only if there is a mismatch
+                // The folder that holds the diffs and the file name
+                diff: './.tmp/diff/desktop_chrome/*.png',
+              },
+              // The mismatch percentage
+              misMatchPercentage: 2.34
+          };
+    }
 }
