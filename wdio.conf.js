@@ -53,35 +53,69 @@ exports.config = {
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 2,
+       maxInstances: 1,
         //
       
         acceptInsecureCerts: true,
-    capabilities: [{
-        browserName: "chrome",
+       
+        port: 4723,
+        path: "/wd/hub",
+    capabilities: [
+       /* {
+           
+            platformName: "Android",
+           'appium:browserName': "Chrome",
+          // 'appium:appiumVersion' : '1.18.3',
+           'appium:deviceName': "emulator-55541",
+           'appium:platformVersion' : "10.0",
+           'appium:automationName':"UiAutomator2"
+          //},
+         */ 
+       {
+      
+
+       browserName: "chrome",
         "goog:chromeOptions": {
             args: ["--window-size=1200,1024"]
         }
-       // } ,
-      //  {
-       //     browserName: "chrome",
-      //      "goog:chromeOptions": {
-     //          args: ["--window-size=720,700"]
-    //   }
-       //},
-      //  {
-      //      browserName: "chrome",
-    //        "goog:chromeOptions": {
-    //            args: ["--window-size=360,700"]
-     //   }
+    },
+     /* {
+          
+        browserName: "chrome",
+         "goog:chromeOptions": {
+           args: ["--window-size=1280,960"]
+    }
+},
+{
+          
+    browserName: "chrome",
+     "goog:chromeOptions": {
+       args: ["--window-size=1366,768"]
+}
+},
 
+      {
+          
+          browserName: "chrome",
+           "goog:chromeOptions": {
+             args: ["--window-size=720,768"]
+     }
+    },
+     {
+      
+           browserName: "chrome",
+           "goog:chromeOptions": {
+               args: ["--window-size=360,600"]
+       } */
 
+      
         
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    //   }
+    ],
     //
     // ===================
     // Test Configurations
@@ -113,7 +147,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://demo.midtrans.com',
+    baseUrl: 'https://demo.midtrans.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 100000,
@@ -132,7 +166,6 @@ exports.config = {
     // commands. Instead, they hook themselves up into the test process.
    
     services: ['chromedriver',
-   
     ['image-comparison',
        
     // The options
@@ -146,9 +179,23 @@ exports.config = {
         blockOutStatusBar: true,
         blockOutToolBar: true,
         // ... more options
-    }]
-       
-    ],
+    }],
+
+    ['selenium-standalone','appium',  {
+        args: {
+            address: '127.0.0.1',
+            commandTimeout: '7200',
+            sessionOverride: true,
+            debugLogSpacing: true,
+         
+
+      },
+      command: 'appium'
+    }
+],
+],
+
+    
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks.html

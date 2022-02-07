@@ -49,6 +49,27 @@ class demoHomePage extends Page {
         this.passCode.setValue(passCode);
         this.btnOK.click();
     }
+    
+    unsuccessfulPayment(creditCardNumber,expDate,cvvNo) {
+            browser.pause(3000)
+            this.btnBuy.click();
+            browser.pause(3000)
+            this.btnCheckout.click();
+            browser.pause(3000)
+            browser.switchToFrame(0);
+            console.log('Switched Frame');
+            this.btnContinue.click();
+            this.optionCreditCard.click();
+            browser.pause(3000)
+            this.txtCardNumber.setValue(creditCardNumber);
+            browser.pause(1000)
+              
+            this.txtExpDate.setValue(expDate);
+            browser.pause(1000)
+            this.txtCvv.setValue(cvvNo);
+            browser.pause(3000)
+            this.btnPayNow.click();
+    }
 
      
 }

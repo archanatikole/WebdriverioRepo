@@ -2,3 +2,9 @@
 [0728/192856.956:ERROR:exception_snapshot_win.cc(98)] thread ID 17900 not found in process
 [0728/192856.960:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
 [0728/192856.960:ERROR:exception_snapshot_win.cc(98)] thread ID 2940 not found in process
+[1029/203104.115:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1029/203104.230:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1029/203104.255:ERROR:exception_snapshot_win.cc(99)] thread ID 22512 not found in process
+[1106/160034.817:ERROR:process_reader_win.cc(151)] SuspendThread: Access is denied. (0x5)
+[1106/160035.218:ERROR:process_reader_win.cc(123)] NtOpenThread: An invalid Client ID was specified. (0xc000000b)
+[1106/160035.218:ERROR:exception_snapshot_win.cc(99)] thread ID 21332 not found in process
